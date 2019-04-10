@@ -1,0 +1,31 @@
+<section id="team" class="team-section text-center my-5">
+    <h2 class="h1-responsive font-weight-bold my-5">Il team</h2>
+    <p class="grey-text w-responsive mx-auto mb-5">Ecco il team che ha sviluppato questa applicazione.</p>
+
+    <div class="row">
+        <div class="col-lg-1 col-md-6">
+            <!-- SPACER -->
+        </div>
+        {% for member in site.data.team %}
+        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member">
+            <div class="avatar mx-auto">
+                <img src="{{ site.baseurl }}/assets/images/team/{{ member.image }}" class="rounded-circle z-depth-1" alt="{{ member.name }}">
+            </div>
+            <h5 class="font-weight-bold mt-4 mb-3">{{ member.name }}</h5>
+            <p class="text-uppercase text-primary"><strong>{{ member.position }}</strong></p>
+            <ul class="list-inline list-unstyled mb-0">
+                {% for social in member.social %}
+                <li class="list-inline-item">
+                    <a class="p-2 fa-lg" href="{{ social.link }}" target="_blank">
+                        <i class="{{ social.icon }}"></i>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        <div class="col-lg-1 col-md-6">
+            <!-- SPACER -->
+        </div>
+    </div>
+</section>

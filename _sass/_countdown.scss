@@ -1,0 +1,25 @@
+div#countdown {
+  p {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    &.numbers {
+      font-size: 6em;
+      background: #ffffff;
+    }
+    &.strings {
+      margin: 0;
+      font-size: 1.5em;
+      padding: 15px 0;
+      background: $primary;
+      color: #ffffff;
+    }
+  }
+  div.countdown-piece {
+    width: 100%;
+    background: #ffffff;
+    float: left;
+    padding: 25px 0 0 0;
+    box-shadow: 5px 6px 9px 1px rgba(53, 53, 53, 0.5);
+  }
+}

@@ -1,0 +1,34 @@
+- name: Alessandro Annese
+  image: "Alessandro.jpg"
+  position: Graphic Designer
+  social:
+    - icon: "fab fa-github"
+      link: "https://github.com/Ax3lFernus"
+    - icon: "fab fa-linkedin"
+      link: "https://www.linkedin.com/in/alessandro-annese-79683913b/"
+- name: Davide De Salvo
+  image: "Davide.jpg"
+  position: Expert
+  social:
+    - icon: "fab fa-github"
+      link: "https://github.com/Davidedes"
+- name: Andrea Esposito
+  image: "Andrea.jpg"
+  position: Project Manager
+  social:
+    - icon: "fab fa-github"
+      link: "https://github.com/espositoandrea"
+    - icon: "fab fa-linkedin"
+      link: "https://www.linkedin.com/in/andrea-esposito-183bb016b/"
+- name: Graziano Montanaro
+  image: "Graziano.jpg"
+  position: Developer
+  social:
+    - icon: "fab fa-github"
+      link: "https://github.com/prewarning"
+- name: Regina Zaccaria
+  image: "Regina.jpg"
+  position: Copywriter
+  social:
+    - icon: "fab fa-github"
+      link: "https://github.com/ReginaZaccaria"

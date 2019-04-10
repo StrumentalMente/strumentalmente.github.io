@@ -1,0 +1,148 @@
+<script src="/assets/js/smtp.js"></script>
+<script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+<script>
+    window.onload = function () {
+        document.getElementById('submit-button').toggleAttribute('disabled', true);
+
+        [].slice.call(document.querySelectorAll('form input, form textarea')).forEach(function (element, index) {
+            element.addEventListener('keyup', function (e) {
+                var invalidFields = [].slice.call(document.querySelectorAll('form input, form textarea')).filter(function (element, index) {
+                    return !element.checkValidity();
+                });
+                document.getElementById('submit-button').toggleAttribute('disabled', Boolean(invalidFields.length));
+            }, false);
+        });
+    }
+
+    function invia() {
+        var md = new Remarkable();
+        let replaceTag = (char) => {
+            let tagsToReplace = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;'
+            };
+            return tagsToReplace[char] || char;
+        };
+        let showConfirmModule = () => {
+            let modal = document.createElement("div");
+            modal.innerHTML = "<div class='modal fade right' id='messageSentModal' tabindex='-1' role='dialog' aria-labelledby='messageSentModalLabel' aria-hidden='true'>\
+                                 <div class='modal-dialog modal-sm' role='document'>\
+                                   <div class='modal-content'>\
+                                     <div class='modal-header'>\
+                                       <h5 class='modal-title' id='messageSentModalLabel'>Messaggio inviato!</h5>\
+                                       <button type='button' class='dialog-close' data-dismiss='modal' aria-label='Close'>\
+                                           <span aria-hidden='true'><i class='fas fa-times'></i></span>\
+                                       </button>\
+                                     </div>\
+                                     <div class='modal-body'>\
+                                       Messaggio inviato! Risponderemo il più presto possibile!\
+                                     </div>\
+                                     <div class='modal-footer flex-center'>\
+                                       <button type='button' class='btn btn-primary' data-dismiss='modal' autofocus>Chiudi</button>\
+                                     </div>\
+                                   </div>\
+                                 </div>\
+                               </div>";
+            document.body.appendChild(modal);
+            $('#messageSentModal').modal();
+            $('#messageSentModal').on('hidden.bs.modal', function () {
+                document.body.removeChild(modal);
+            });
+        };
+        let mailSubject = document.getElementById("contact-subject").value.replace(/[&<>]/g, replaceTag);
+        let mailContent = md.render(document.getElementById("contact-message").value.replace(/[&<>]/g, replaceTag));
+        let mailSender = document.getElementById("contact-name").value.replace(/[&<>]/g, replaceTag);
+        let mailAddress = document.getElementById("contact-email").value.replace(/[&<>]/g, replaceTag);
+        Email.send({
+            SecureToken: "7df491c5-4cc7-4657-b7a3-e5d6f4039226",
+            To: 'info@strumentalmente.it',
+            From: mailAddress,
+            Subject: "Nuovo contatto: " + mailSubject,
+            Body: mailSender + " ha scritto: " + mailContent
+        }).then(message => console.log(message));
+        Email.send({
+            SecureToken: "7df491c5-4cc7-4657-b7a3-e5d6f4039226",
+            To: mailAddress,
+            From: 'info@strumentalmente.it',
+            Subject: mailSender + ", grazie per averci contattato!",
+            Body: "Gentile " + mailSender + ", abbiamo ricevuto la tua richiesta di contatto. Cordiali saluti, Il team di StrumentalMente.<br/> Il tuo messaggio: <br /><pre><code>" + mailContent + "</code></pre>"
+        }).then(
+            message => { showConfirmModule(); document.getElementById("contact-form").reset(); }
+        );
+    }
+</script>
+<section id="contact-us" class="my-5">
+    <h2 class="h1-responsive font-weight-bold text-center my-5">Contattaci</h2>
+    <p class="text-center w-responsive mx-auto pb-5">Per maggiori informazioni o
+        per problemi legati a StrumentalMente, contattaci mediante il seguente form
+        o tramite i punti di contatto segnalati in questa pagina.</p>
+    <div class="row">
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" action="#contact-us" method="GET" onsubmit="invia(); return false;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="email" id="contact-email" class="form-control" placeholder="La tua e-mail" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="contact-subject" class="form-control" placeholder="Oggetto" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <div style="position: relative;">
+                                <textarea id="contact-message" class="form-control md-textarea" rows="3" placeholder="Il tuo messaggio" required="" style="
+                                    max-width: calc(100% - 3em);
+                                    padding-right: 3em;
+                                    display: block;
+                                "></textarea>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 128" style="
+                                    width: 2em;
+                                    opacity: .2;
+                                    position: absolute;
+                                    bottom: 10px;
+                                    right: 10px;
+                                ">
+                                    <path d="M193 128H15a15 15 0 0 1-15-15V15A15 15 0 0 1 15 0h178a15 15 0 0 1 15 15v98a15 15 0 0 1-15 15zM50 98V59l20 25 20-25v39h20V30H90L70 55 50 30H30v68zm134-34h-20V30h-20v34h-20l30 35z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-md-left">
+                    <button type="reset" class="btn btn-outline-primary btn-md">Reset</button>
+                    <button type="submit" id="submit-button" class="btn btn-primary btn-md" disabled>Invia</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                    <p>Taranto, 74120, Italia</p>
+                </li>
+                <!-- <li>
+                    <i class="fas fa-phone fa-2x mt-4 text-primary"></i>
+                    <p>+ 01 234 567 89</p>
+                </li> -->
+                <li>
+                    <i class="fas fa-envelope fa-2x mt-4 text-primary"></i>
+                    <p class="mb-0">info@strumentalmente.it</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

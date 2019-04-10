@@ -1,0 +1,38 @@
+.modal-header {
+	background-color: hsl(0, 0%, 25%);
+	height: 32px;
+	color: white;
+	display: grid;
+	grid-template-columns: auto 46px;
+	padding: 0;
+	.modal-title {
+		display: flex;
+		align-items: center;
+		height: 100%;
+        font-size: 12px;
+        margin-left: 8px;
+		user-select: none;
+	}
+
+	.modal-image {
+		height: 16px;
+		width: 16px;
+	}
+
+	.dialog-close {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		opacity: 0.8;
+		color: inherit;
+		background: none;
+		border: none;
+		&:hover {
+			background-color: #e81123;
+		}
+	}
+}
+
+.modal-footer {
+    padding: 0 1rem;
+}

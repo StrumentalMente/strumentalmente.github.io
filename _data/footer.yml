@@ -1,0 +1,31 @@
+# links:
+#   - left:
+#     title: "Quick links 1"
+#     links:
+#       - text: "Lorem 1"
+#         url: "#"
+#       - text: "Ipsum 1"
+#         url: "#"
+#   - center:
+#     title: "Quick links 2"
+#     links:
+#       - text: "Lorem 2"
+#         url: "#"
+#       - text: "Ipsum 2"
+#         url: "#"
+#   - right:
+#     title: "Quick links 3"
+#     links:
+#       - text: "Lorem 3"
+#         url: "#"
+#       - text: "Ipsum 3"
+#         url: "#"
+icons:
+  - label: "Apri la repository"
+    link: "https://github.com/F-S-C/StrumentalMente"
+    icon: "fas fa-code-branch"
+    blank: true
+  - label: "Visita il profilo di GitHub degli FSC"
+    link: "https://github.com/F-S-C"
+    icon: "fab fa-github"
+    blank: true

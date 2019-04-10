@@ -1,0 +1,32 @@
+<section id="news" class="text-center my-5">
+    <h2 class="h1-responsive font-weight-bold text-center my-5">Notizie recenti</h2>
+    <p class="text-center w-responsive mx-auto pb-5">Resta aggiornato sulle notizie su StrumentalMente.</p>
+    <div class="row">
+        {% for post in site.posts limit:3 %}
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{{ post.imageurl }}" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </h4>
+                    <p class="card-text">{{ post.excerpt }}</p>
+                    <a href="{{ post.url }}" class="btn btn-primary mx-auto" style="display: block;">Leggi</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col">
+            <p style="text-align: center;">Non sono presenti post.</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% assign number_of_posts = site.posts | size %}
+    {% if number_of_posts > 0 %}
+    <div class="row">
+        <div class="col">
+            <button type="button" onclick="location.href='{{ site.baseurl }}/blog.html';" class="btn btn-primary mx-auto" {% if number_of_posts <= 3 %} disabled {% endif %} style="display: block; width: fit-content;">Carica altro</button>
+        </div>
+    </div>
+    {% endif %}
+</section>

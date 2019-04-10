@@ -1,0 +1,15 @@
+<section id="about" class="text-center my-5">
+    <h2 class="h1-responsive font-weight-bold my-5">Informazioni</h2>
+    <p class="lead grey-text w-responsive mx-auto mb-5">Ecco cosa offre Strumental<wbr />Mente.</p>
+        <div class="row">
+            {% for feature in site.data.features %}
+            <div class="col-md-3">
+                <i class="{{ feature.icon }} fa-3x" style="color: {{ feature.color }};"></i>
+                <h5 class="font-weight-bold my-4">{{ feature.title }}</h5>
+                <p class="grey-text mb-md-0 mb-5">
+                    {{ feature.description | markdownify }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+</section>
