@@ -55,14 +55,14 @@
         let mailSender = document.getElementById("contact-name").value.replace(/[&<>]/g, replaceTag);
         let mailAddress = document.getElementById("contact-email").value.replace(/[&<>]/g, replaceTag);
         Email.send({
-            SecureToken: "7df491c5-4cc7-4657-b7a3-e5d6f4039226",
+            SecureToken: "dfc30415-bd84-4f51-8403-70b756353f93",
             To: 'info@strumentalmente.it',
             From: mailAddress,
             Subject: "Nuovo contatto: " + mailSubject,
             Body: mailSender + " ha scritto: " + mailContent
         }).then(message => console.log(message));
         Email.send({
-            SecureToken: "7df491c5-4cc7-4657-b7a3-e5d6f4039226",
+            SecureToken: "dfc30415-bd84-4f51-8403-70b756353f93",
             To: mailAddress,
             From: 'info@strumentalmente.it',
             Subject: mailSender + ", grazie per averci contattato!",
