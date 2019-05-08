@@ -25,6 +25,7 @@ url: "http://strumentalmente.it" # the base hostname & protocol for your site, e
 github_username: f-s-c
 lang: "it"
 image: "/assets/images/logo/1024x1024.png"
+canonical_url: 'https://strumentalmente.it'
 
 # Build settings
 markdown: kramdown
