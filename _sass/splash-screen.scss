@@ -42,5 +42,10 @@
         @include centerer;
       }
     }
+
+    &>div a{
+        background-color: $main-color-dark !important;
+        @include long-shadow(box, $main-color-dark, 450, false, false, right);
+    }
   }
 }

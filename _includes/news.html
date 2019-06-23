@@ -5,13 +5,11 @@
         {% for post in site.posts limit:3 %}
         <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ post.imageurl }}" alt=""></a>
+                <img class="card-img-top" src="{{ site.baseurl }}/{{ post.imageurl }}" alt="{{ post.title }} thumbnail">
                 <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </h4>
-                    <p class="card-text">{{ post.excerpt }}</p>
-                    <a href="{{ post.url }}" class="btn btn-primary mx-auto" style="display: block;">Leggi</a>
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    <p class="card-text">{{ post.content }}</p>
+                    <!-- <a href="{{ post.url }}" class="btn btn-primary mx-auto" style="display: block;">Leggi</a> -->
                 </div>
             </div>
         </div>

@@ -29,6 +29,7 @@ canonical_url: 'https://strumentalmente.it'
 
 # Build settings
 markdown: kramdown
+excerpt_separator: <!--more-->
 # theme: minima
 plugins:
   - jekyll-feed

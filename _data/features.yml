@@ -1,6 +1,6 @@
 - title: "La teoria"
   icon: "fas fa-book"
-  color: "#0C4D95"
+  color: "#E55100"
   description: > 
     Entra a contatto con il mondo
     della musica imparando i concetti
@@ -8,21 +8,21 @@
     musicale.
 - title: "Gli strumenti"
   icon: "fas fa-guitar"
-  color: "#E58B00"
+  color: "#E55100"
   description: > 
     Avvicinati a uno strumento musicale
     imparando a conoscerlo e apprendendo
     tecniche via via sempre più avanzate.
 - title: "Gli accordi"
   icon: "fas fa-music"
-  color: "#00976A"
+  color: "#E55100"
   description: > 
     Impara a suonare gli accordi sul tuo
     strumento preferito e potrai essere
     l'anima delle serate fra i tuoi amici
 - title: "Quiz"
   icon: "fas fa-question"
-  color: "#e55100"
+  color: "#E55100"
   description: > 
     Metti alla prova ciò che hai appreso
     tramite dei quiz completi studiati
