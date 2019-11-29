@@ -60,7 +60,7 @@
         reset.disabled = true;
         showConfirmModule("Invio il messaggio...");
         Email.send({
-            SecureToken: "e0542705-9353-41f8-a82b-0fdca7da9977",
+            SecureToken: "0dd468c4-afc7-4982-928a-ab1647471c05",
             To: 'info@strumentalmente.it',
             From: mailAddress,
             Subject: "Nuovo contatto: " + mailSubject,
@@ -68,18 +68,18 @@
         }).then(first => {
             if (first.includes("OK")) {
                 Email.send({
-                    SecureToken: "e0542705-9353-41f8-a82b-0fdca7da9977",
+                    SecureToken: "0dd468c4-afc7-4982-928a-ab1647471c05",
                     To: mailAddress,
                     From: 'info@strumentalmente.it',
                     Subject: mailSender + ", grazie per averci contattato!",
                     Body: "Gentile " + mailSender + "<br> abbiamo ricevuto la tua richiesta di contatto.<br><br> Cordiali saluti,<br> Il team di StrumentalMente.<br><br><hr> <i>Il tuo messaggio:</i> <br><pre><code>" + mailContent + "</code></pre>"
                 }).then(second => {
-                    if (second.includes("OK")) {
+                    if (second.includes("OK"))
                         showConfirmModule("Messaggio inviato correttamente. Ti risponderemo al pi&ugrave; presto!");
-                        document.getElementById("contact-form").reset();
-                        reset.disabled = false;
-                    } else
+                    else
                         showConfirmModule("Errore durante l'invio della mail.<br>Riprova pi&ugrave; tardi.");
+                    document.getElementById("contact-form").reset();
+                    reset.disabled = false;
                 }
                 );
             } else
