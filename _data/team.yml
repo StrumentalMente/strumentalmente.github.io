@@ -8,7 +8,7 @@
       link: "https://www.linkedin.com/in/alessandro-annese-79683913b/"
 - name: Davide De Salvo
   image: "Davide.jpg"
-  position: Expert
+  position: Developer
   social:
     - icon: "fab fa-github"
       link: "https://github.com/Davidedes"

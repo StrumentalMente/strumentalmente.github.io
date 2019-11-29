@@ -24,7 +24,7 @@
             };
             return tagsToReplace[char] || char;
         };
-        let showConfirmModule = () => {
+        let showConfirmModule = (message) => {
             let modal = document.createElement("div");
             modal.innerHTML = "<div class='modal fade right' id='messageSentModal' tabindex='-1' role='dialog' aria-labelledby='messageSentModalLabel' aria-hidden='true'>\
                                  <div class='modal-dialog modal-sm' role='document'>\
@@ -36,7 +36,7 @@
                                        </button>\
                                      </div>\
                                      <div class='modal-body'>\
-                                       Messaggio inviato! Risponderemo il più presto possibile!\
+                                       " + message + "\
                                      </div>\
                                      <div class='modal-footer flex-center'>\
                                        <button type='button' class='btn btn-primary' data-dismiss='modal' autofocus>Chiudi</button>\
@@ -54,22 +54,37 @@
         let mailContent = md.render(document.getElementById("contact-message").value.replace(/[&<>]/g, replaceTag));
         let mailSender = document.getElementById("contact-name").value.replace(/[&<>]/g, replaceTag);
         let mailAddress = document.getElementById("contact-email").value.replace(/[&<>]/g, replaceTag);
+        let submit = document.getElementById("submit-button");
+        let reset = document.getElementById("reset-button");
+        submit.disabled = true;
+        reset.disabled = true;
+        showConfirmModule("Invio il messaggio...");
         Email.send({
-            SecureToken: "dfc30415-bd84-4f51-8403-70b756353f93",
+            SecureToken: "e0542705-9353-41f8-a82b-0fdca7da9977",
             To: 'info@strumentalmente.it',
             From: mailAddress,
             Subject: "Nuovo contatto: " + mailSubject,
-            Body: mailSender + " ha scritto: " + mailContent
-        }).then(message => console.log(message));
-        Email.send({
-            SecureToken: "dfc30415-bd84-4f51-8403-70b756353f93",
-            To: mailAddress,
-            From: 'info@strumentalmente.it',
-            Subject: mailSender + ", grazie per averci contattato!",
-            Body: "Gentile " + mailSender + ", abbiamo ricevuto la tua richiesta di contatto. Cordiali saluti, Il team di StrumentalMente.<br/> Il tuo messaggio: <br /><pre><code>" + mailContent + "</code></pre>"
-        }).then(
-            message => { showConfirmModule(); document.getElementById("contact-form").reset(); }
-        );
+            Body: mailSender + " ha scritto:<br><pre><code>" + mailContent + "</pre></code>"
+        }).then(first => {
+            if (first.includes("OK")) {
+                Email.send({
+                    SecureToken: "e0542705-9353-41f8-a82b-0fdca7da9977",
+                    To: mailAddress,
+                    From: 'info@strumentalmente.it',
+                    Subject: mailSender + ", grazie per averci contattato!",
+                    Body: "Gentile " + mailSender + "<br> abbiamo ricevuto la tua richiesta di contatto.<br><br> Cordiali saluti,<br> Il team di StrumentalMente.<br><br><hr> <i>Il tuo messaggio:</i> <br><pre><code>" + mailContent + "</code></pre>"
+                }).then(second => {
+                    if (second.includes("OK")) {
+                        showConfirmModule("Messaggio inviato correttamente. Ti risponderemo al pi&ugrave; presto!");
+                        document.getElementById("contact-form").reset();
+                        reset.disabled = false;
+                    } else
+                        showConfirmModule("Errore durante l'invio della mail.<br>Riprova pi&ugrave; tardi.");
+                }
+                );
+            } else
+                showConfirmModule("Errore durante l'invio della mail.<br>Riprova pi&ugrave; tardi.")
+        });
     }
 </script>
 <section id="contact-us" class="my-5">
@@ -83,12 +98,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome" required>
+                            <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome"
+                                required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="email" id="contact-email" class="form-control" placeholder="La tua e-mail" required>
+                            <input type="email" id="contact-email" class="form-control" placeholder="La tua e-mail"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -103,7 +120,8 @@
                     <div class="col-md-12">
                         <div class="md-form">
                             <div style="position: relative;">
-                                <textarea id="contact-message" class="form-control md-textarea" rows="3" placeholder="Il tuo messaggio" required="" style="
+                                <textarea id="contact-message" class="form-control md-textarea" rows="3"
+                                    placeholder="Il tuo messaggio" required style="
                                     max-width: calc(100% - 3em);
                                     padding-right: 3em;
                                     display: block;
@@ -115,14 +133,16 @@
                                     bottom: 10px;
                                     right: 10px;
                                 ">
-                                    <path d="M193 128H15a15 15 0 0 1-15-15V15A15 15 0 0 1 15 0h178a15 15 0 0 1 15 15v98a15 15 0 0 1-15 15zM50 98V59l20 25 20-25v39h20V30H90L70 55 50 30H30v68zm134-34h-20V30h-20v34h-20l30 35z"></path>
+                                    <path
+                                        d="M193 128H15a15 15 0 0 1-15-15V15A15 15 0 0 1 15 0h178a15 15 0 0 1 15 15v98a15 15 0 0 1-15 15zM50 98V59l20 25 20-25v39h20V30H90L70 55 50 30H30v68zm134-34h-20V30h-20v34h-20l30 35z">
+                                    </path>
                                 </svg>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center text-md-left">
-                    <button type="reset" class="btn btn-outline-primary btn-md">Reset</button>
+                    <button type="reset" id="reset-button" class="btn btn-outline-primary btn-md">Reset</button>
                     <button type="submit" id="submit-button" class="btn btn-primary btn-md" disabled>Invia</button>
                 </div>
             </form>
@@ -132,7 +152,7 @@
             <ul class="list-unstyled mb-0">
                 <li>
                     <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
-                    <p>Taranto, 74120, Italia</p>
+                    <p>Taranto, 74121, Italia</p>
                 </li>
                 <!-- <li>
                     <i class="fas fa-phone fa-2x mt-4 text-primary"></i>
