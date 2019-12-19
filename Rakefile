@@ -3,6 +3,7 @@ require 'net/ftp'
 require 'fileutils'
 require 'io/console'
 require 'colorize'
+require 'ruby-progressbar'
 
 def prompt(*args)
   print(*args)
@@ -12,11 +13,12 @@ end
 def ftp_files(prefixToRemove, sourceFileList, targetDir, hostname, username, password, exclude_files)
   Net::FTP.open(hostname, username, password) do |ftp|
     begin
-      puts "Creating dir #{targetDir}"
+    #   puts "Creating dir #{targetDir}"
       ftp.mkdir targetDir
     rescue StandardError
-      puts $ERROR_INFO
+    #   puts $ERROR_INFO
     end
+    progressbar = ProgressBar.create(:total => sourceFileList.size, :progress_mark => '#', :format => '%t: |%B|'.yellow)
     sourceFileList.each do |srcFile|
       targetFile = srcFile.pathmap(prefixToRemove ? "%{^#{prefixToRemove},#{targetDir}}p" : "#{targetDir}%s%p")
 
@@ -24,16 +26,19 @@ def ftp_files(prefixToRemove, sourceFileList, targetDir, hostname, username, pas
 
       begin
         if File.directory?(srcFile)
-          puts "Creating dir #{targetFile}"
+          progressbar.log "Creating dir #{targetFile}"
           ftp.mkdir targetFile
         else
-          puts "Copying #{srcFile} -> #{targetFile}"
+          progressbar.log "Copying #{srcFile} -> #{targetFile}"
           ftp.putbinaryfile(srcFile, targetFile)
         end
+        progressbar.increment 
       rescue StandardError
-        puts $ERROR_INFO
+        progressbar.log $ERROR_INFO
       end
     end
+    progressbar.finish
+    progressbar.stop
   end
 end
 
