@@ -35,9 +35,13 @@
             {% endif %}
         </div>
         <div class="row small footer-copyright">
-            <div class="col-12 text-center py-3">
-                <p>Copyright &copy 2019,
-                    <a href="{{site.author_url}}" target="_blank">{{site.author}}</a>
+            <div class="col-12 text-center py-3" itemprop="copyrightHolder"
+            itemscope itemtype="https://schema.org/Organization">
+                <p>
+                    Copyright &copy; 2019,
+                    <a itemprop="url" href="{{site.author_url}}" target="_blank">
+                        <span itemprop="name">{{site.author}}</span>
+                    </a>
                     All right Reversed.</p>
             </div>
             <hr/>
