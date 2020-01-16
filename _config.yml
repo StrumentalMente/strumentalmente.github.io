@@ -22,10 +22,11 @@ description: >-
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://strumentalmente.it" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-github_username: f-s-c
+github_username: F-S-C
 lang: "it"
 image: "/assets/images/logo/1024x1024.png"
 canonical_url: 'https://strumentalmente.it'
+author_url: "https://F-S-C.github.io"
 
 # Build settings
 markdown: kramdown

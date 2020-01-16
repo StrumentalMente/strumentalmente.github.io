@@ -2,49 +2,51 @@
     <div class="container-fluid">
         <div class="container">
             {% if site.data.footer.link %}
-            <div class="row text-xs-center text-sm-left text-md-left">
-                {% for group in site.data.footer.links %}
-                <div class="col-xs-12 col-sm-4 col-md-4 text-center">
-                    <h5>{{ group.title }}</h5>
-                    <ul class="list-unstyled quick-links">
-                        {% for link in group.links %}
-                        <li><a href="{{ link.url }}">{{ link.text }}</a></li>
-                        {% endfor %}
-                    </ul>
+                <div class="row text-xs-center text-sm-left text-md-left">
+                    {% for group in site.data.footer.links %}
+                        <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+                            <h5>{{ group.title }}</h5>
+                            <ul class="list-unstyled quick-links">
+                                {% for link in group.links %}
+                                    <li>
+                                        <a href="{{ link.url }}">{{ link.text }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
             {% endif %}
             {% if site.data.footer.icons %}
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 {% if site.data.footer.link %} mt-2 mt-sm-5 {% endif %}">
-                    <ul class="list-unstyled list-inline social text-center">
-                        {% for icon in site.data.footer.icons %}
-                        <li class="list-inline-item"><a title="{{ icon.label }}" aria-label="{{ icon.label }}"
-                                href="{{ icon.link }}" {% if icon.blank %} target="_blank" {% endif %}><i
-                                    aria-hidden="true" class="{{ icon.icon }}"></i></a></li>
-                        {% endfor %}
-                    </ul>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 {% if site.data.footer.link %} mt-2 mt-sm-5 {% endif %}">
+                        <ul class="list-unstyled list-inline social text-center">
+                            {% for icon in site.data.footer.icons %}
+                                <li class="list-inline-item">
+                                    <a title="{{ icon.label }}" aria-label="{{ icon.label }}" href="{{ icon.link }}" {% if icon.blank %} target="_blank" {% endif %}>
+                                        <i aria-hidden="true" class="{{ icon.icon }}"></i>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <hr/>
                 </div>
-                <hr />
-            </div>
             {% endif %}
         </div>
         <div class="row small footer-copyright">
             <div class="col-12 text-center py-3">
-                <p>Copyright &copy 2019, FSC. All right Reversed.</p>
+                <p>Copyright &copy 2019,
+                    <a href="{{site.author_url}}" target="_blank">{{site.author}}</a>
+                    All right Reversed.</p>
             </div>
-            <hr />
+            <hr/>
         </div>
     </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/mdb.min.js"></script>
