@@ -32,3 +32,5 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 gem 'ruby-progressbar'
 gem 'colorize'
+
+gem "rake", "~> 13.0"
