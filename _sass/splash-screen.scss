@@ -1,51 +1,68 @@
 .splash-screen {
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  background-color: $primary;
-  color: white;
-  position: relative;
-  overflow: hidden;
-  .inner {
-    @include centerer;
-    h1 {
-      margin: 0;
-      font-weight: normal;
-      @include long-shadow(text, $main-color-dark, 450, false, false, right);
-      span {
-        font-weight: bold;
-      }
-    }
-    h2 {
-      margin: 0;
-      font-weight: normal;
-      font-size: 12pt;
-      @include long-shadow(text, $main-color-dark, 450, false, false, right);
-    }
-    .logo {
-      width: 20vw;
-      max-width: 150px;
-      border-radius: 50%;
-      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(87, 54, 54, 0.22);
-    }
-    .scroll-down {
-      color: white;
-      border: 2px solid white;
-      border-radius: 50%;
-      padding: 5px;
-      display: block;
-      width: 49px;
-      height: 49px;
-      position: relative;
-      margin: 15px auto;
-      i {
-        @include centerer;
-      }
-    }
+	text-align: center;
+	width: 100%;
+	height: 100vh;
+	background-color: $primary;
+	color: white;
+	position: relative;
+	overflow: hidden;
+	.inner {
+		@include centerer;
+		h1 {
+			margin: 0;
+			font-weight: normal;
+			@include long-shadow(text, $main-color-dark, 450, false, false, right);
+			span {
+				font-weight: bold;
+			}
+		}
+		h2 {
+			margin: 0;
+			font-weight: normal;
+			font-size: 12pt;
+			@include long-shadow(text, $main-color-dark, 450, false, false, right);
+		}
+		.logo {
+			width: 20vw;
+			max-width: 150px;
+			border-radius: 50%;
+			box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(87, 54, 54, 0.22);
+		}
+		.scroll-down {
+			color: white;
+			border: 2px solid white;
+			border-radius: 50%;
+			padding: 5px;
+			display: block;
+			width: 49px;
+			height: 49px;
+			position: relative;
+			margin: 15px auto;
+			i {
+				@include centerer;
+			}
+		}
 
-    &>div a{
-        background-color: $main-color-dark !important;
-        @include long-shadow(box, $main-color-dark, 450, false, false, right);
-    }
-  }
+		& > div a {
+			background-color: $main-color-dark !important;
+			@include long-shadow(box, $main-color-dark, 450, false, false, right);
+		}
+	}
+}
+
+.post-splash-screen {
+	@extend .splash-screen;
+	height: 50vh;
+	.post-splash-screen-image {
+		width: calc(100% + 100px);
+		height: calc(100% + 100px);
+		filter: blur(10px);
+		left: -50px;
+		top: -50px;
+		position: relative;
+	}
+	.inner h1,
+	.inner h2 {
+		text-shadow: 0 0 6px rgba(0, 0, 0, 0.75);
+	}
 }

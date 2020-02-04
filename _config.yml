@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: StrumentalMente
-email: your-email@example.com
+email: "info@strumentalmente.it"
 author: FSC
 logo: "/assets/images/logo/1024x1024.png"
 description: >-

@@ -12,7 +12,7 @@
         <ul class="navbar-nav mr-auto">
             {% for link in site.data.navigation %}
             <li id="{{ link.url }}-link" class="nav-item">
-                <a class="nav-link" href="{{ link.url }}">{{ link.text }}</a>
+                <a class="nav-link" href="{{ site.url }}/{{ link.url }}">{{ link.text }}</a>
             </li>
             {% endfor %}
         </ul>
