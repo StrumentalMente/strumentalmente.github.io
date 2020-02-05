@@ -99,20 +99,20 @@
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome"
-                                required>
+                                required aria-label="Il tuo nome" name="contact-name">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <input type="email" id="contact-email" class="form-control" placeholder="La tua e-mail"
-                                required>
+                                required aria-label="Il tuo e-mail" name="contact-email">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="md-form mb-0">
-                            <input type="text" id="contact-subject" class="form-control" placeholder="Oggetto" required>
+                            <input type="text" id="contact-subject" class="form-control" placeholder="Oggetto" required aria-label="Oggetto" name="contact-subject">
                         </div>
                     </div>
                 </div>
@@ -125,14 +125,14 @@
                                     max-width: calc(100% - 3em);
                                     padding-right: 3em;
                                     display: block;
-                                "></textarea>
+                                " aria-label="Il tuo messaggio" name="contact-message"></textarea>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 128" style="
                                     width: 2em;
                                     opacity: .2;
                                     position: absolute;
                                     bottom: 10px;
                                     right: 10px;
-                                ">
+                                " aria-label="Il messaggio supporta la formattazione mediante Markdown">
                                     <path
                                         d="M193 128H15a15 15 0 0 1-15-15V15A15 15 0 0 1 15 0h178a15 15 0 0 1 15 15v98a15 15 0 0 1-15 15zM50 98V59l20 25 20-25v39h20V30H90L70 55 50 30H30v68zm134-34h-20V30h-20v34h-20l30 35z">
                                     </path>
@@ -151,15 +151,15 @@
         <div class="col-md-3 text-center">
             <ul class="list-unstyled mb-0">
                 <li>
-                    <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                    <span class="fas fa-map-marker-alt fa-2x text-primary"></span>
                     <p>Taranto, 74121, Italia</p>
                 </li>
                 <!-- <li>
-                    <i class="fas fa-phone fa-2x mt-4 text-primary"></i>
+                    <span class="fas fa-phone fa-2x mt-4 text-primary"></span>
                     <p>+ 01 234 567 89</p>
                 </li> -->
                 <li>
-                    <i class="fas fa-envelope fa-2x mt-4 text-primary"></i>
+                    <span class="fas fa-envelope fa-2x mt-4 text-primary"></span>
                     <p class="mb-0">info@strumentalmente.it</p>
                 </li>
             </ul>

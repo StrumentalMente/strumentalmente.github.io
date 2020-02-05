@@ -1,0 +1,21 @@
+.skip-navigation {
+	@include sr-only;
+	@include sr-only-focusable;
+	@extend .btn;
+	@extend .btn-primary;
+	@extend .p-3;
+	position: absolute !important;
+	z-index: $zindex-fixed + 1;
+	color: white;
+	background-color: black;
+
+	&:active,
+	&:focus {
+		color: white;
+		background-color: black;
+	}
+}
+
+p a {
+	text-decoration: underline;
+}

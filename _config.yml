@@ -20,7 +20,7 @@ logo: "/assets/images/logo/1024x1024.png"
 description: >-
   Il sito ufficiale.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://strumentalmente.it" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://strumentalmente.it" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username: F-S-C
 lang: "it"
@@ -30,14 +30,12 @@ author_url: "https://F-S-C.github.io"
 
 # Build settings
 markdown: kramdown
-excerpt_separator: <!--more-->
+excerpt_separator: <!-- more -->
 # theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-
-excerpt_separator: <!--more-->
 
 defaults:
   -

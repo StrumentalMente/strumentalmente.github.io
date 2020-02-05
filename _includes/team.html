@@ -11,13 +11,13 @@
             <div class="avatar mx-auto">
                 <img src="{{ site.baseurl }}/assets/images/team/{{ member.image }}" class="rounded-circle z-depth-1" alt="{{ member.name }}">
             </div>
-            <h5 class="font-weight-bold mt-4 mb-3" itemprop="name">{{ member.name }}</h5>
+            <p class="font-weight-bold mt-4 mb-3 h5" itemprop="name">{{ member.name }}</p>
             <p class="text-uppercase text-primary" itemprop="jobTitle"><strong>{{ member.position }}</strong></p>
             <ul class="list-inline list-unstyled mb-0">
                 {% for social in member.social %}
                 <li class="list-inline-item">
                     <a class="p-2 fa-lg" href="{{ social.link }}" target="_blank">
-                        <i class="{{ social.icon }}"></i>
+                        <span class="{{ social.icon }}"></span>
                     </a>
                 </li>
                 {% endfor %}

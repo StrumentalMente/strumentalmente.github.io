@@ -2,33 +2,38 @@
 layout: default
 ---
 
-<style type="text/css" media="screen">
+<style media="screen" type="text/css">
     .container {
         margin: 90px auto;
         max-width: 600px;
         text-align: center;
     }
 
-    .container>h1 {
-        margin: 35px 0 15px 0;
+    .container > h1 {
+        margin: 35px 0 15px;
         font-size: 4em;
         line-height: 1;
         letter-spacing: -1px;
     }
 
-    .container>h2 {
+    .container > h2 {
         margin-bottom: 30px;
     }
 
-    .container>strong {
+    .container > strong {
         font-weight: bold;
     }
 </style>
 
-<div class="container">
+<main class="container" id="main">
     <h1>404</h1>
-    <img src="/assets/images/space.svg" width="40%">
-    <h2>Huston, we have a problem...</h2>
-    <p><strong>Pagina non trovata :(</strong></p>
+    <img src="/assets/images/space.svg" width="40%" alt="" aria-hidden="true">
+    <h2 lang="en">Huston, we have a problem...</h2>
+    <p>
+        <strong>Pagina non trovata :(</strong>
+    </p>
     <p>Mi dispiace, non sono riuscito a trovare la pagina desiderata.</p>
-</div>
+    <p>
+        <a href="{{site.url}}" class="btn btn-primary text-bold">Torna alla Home</a>
+    </p>
+</main>

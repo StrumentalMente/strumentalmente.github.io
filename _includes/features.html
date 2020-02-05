@@ -4,8 +4,8 @@
         <div class="row">
             {% for feature in site.data.features %}
             <div class="col-md-3">
-                <i class="{{ feature.icon }} fa-3x" style="color: {{ feature.color }};"></i>
-                <h5 class="font-weight-bold my-4">{{ feature.title }}</h5>
+                <span class="{{ feature.icon }} fa-3x" style="color: {{ feature.color }};"></span>
+                <p class="font-weight-bold my-4 h5">{{ feature.title }}</p>
                 <p class="grey-text mb-md-0 mb-5">
                     {{ feature.description | markdownify }}
                 </p>

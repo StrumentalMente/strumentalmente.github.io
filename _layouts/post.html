@@ -3,19 +3,21 @@ layout: default
 ---
 {% include navbar.html %}
 
-<div id="splash" class="post-splash-screen">
-    <div class="post-splash-screen-image" style="background-image: url('{{ site.url }}/{{page.imageurl}}');"></div>
-    <div class="inner">
-        <h1 itemprop="name">{{ page.title }}</h1>
-        <h2 itemprop="headline">di {{page.author}}, pubblicato il: {{page.date | date: "%d/%m/%Y"}}</h2>
+<main id="main">
+    <header id="splash" class="post-splash-screen">
+        <div class="post-splash-screen-image" style="background-image: url('{{ site.url }}/{{page.imageurl}}');"></div>
+        <div class="inner">
+            <h1 itemprop="name">{{ page.title }}</h1>
+            <h2 itemprop="headline">di {{page.author}}, pubblicato il: {{page.date | date: "%d/%m/%Y"}}</h2>
+        </div>
+    </header>
+    <div class="container" id="content" style="padding-top: 65px;">
+        <div class="row">
+            <div class="col bd-content my-5" role="main">
+                {{ content }}
+            </div>
+        </div>
     </div>
-</div>
-<div class="container" id="content" style="padding-top: 65px;">
-    <div class="row">
-        <main class="col bd-content my-5" role="main">
-            {{ content }}
-        </main>
-    </div>
-</div>
+</main>
 
 {% include footer.html %}

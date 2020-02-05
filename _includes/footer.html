@@ -24,7 +24,7 @@
                             {% for icon in site.data.footer.icons %}
                                 <li class="list-inline-item">
                                     <a title="{{ icon.label }}" aria-label="{{ icon.label }}" href="{{ icon.link }}" {% if icon.blank %} target="_blank" {% endif %}>
-                                        <i aria-hidden="true" class="{{ icon.icon }}"></i>
+                                        <span aria-hidden="true" class="{{ icon.icon }}"></span>
                                     </a>
                                 </li>
                             {% endfor %}
@@ -66,7 +66,8 @@
         $(".navbar-nav .active").removeClass("active").parent().addClass("active");
     });
     $(document).ready(function () {
-        $('#download-button').attr('href', getOSDownload())
+        $('#download-button').attr('href', getOSDownload());
+        $('#download-button').html('Download (' + getOSDownload().slice(-3).toUpperCase() + ')');
         $('a[href^="#"]').click(function () {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
                 && location.hostname == this.hostname) {
