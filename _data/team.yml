@@ -1,4 +1,5 @@
-- name: Alessandro Annese
+- name: Alessandro
+  surname: Annese
   image: "Alessandro.jpg"
   position: Graphic Designer
   social:
@@ -6,13 +7,15 @@
       link: "https://github.com/Ax3lFernus"
     - icon: "fab fa-linkedin"
       link: "https://www.linkedin.com/in/alessandro-annese-79683913b/"
-- name: Davide De Salvo
+- name: Davide
+  surname: De Salvo
   image: "Davide.jpg"
   position: Developer
   social:
     - icon: "fab fa-github"
       link: "https://github.com/Davidedes"
-- name: Andrea Esposito
+- name: Andrea
+  surname: Esposito
   image: "Andrea.jpg"
   position: Project Manager
   social:
@@ -20,13 +23,15 @@
       link: "https://github.com/espositoandrea"
     - icon: "fab fa-linkedin"
       link: "https://www.linkedin.com/in/andrea-esposito-183bb016b/"
-- name: Graziano Montanaro
+- name: Graziano
+  surname: Montanaro
   image: "Graziano.jpg"
   position: Developer
   social:
     - icon: "fab fa-github"
       link: "https://github.com/prewarning"
-- name: Regina Zaccaria
+- name: Regina
+  surname: Zaccaria
   image: "Regina.jpg"
   position: Copywriter
   social:
