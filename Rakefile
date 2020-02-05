@@ -3,68 +3,72 @@ require 'net/ftp'
 require 'fileutils'
 require 'io/console'
 require 'colorize'
+require 'yaml'
 require 'ruby-progressbar'
+
+require_relative './ftputils'
 
 def prompt(*args)
   print(*args)
   STDIN.gets.chomp
 end
 
-def ftp_files(prefixToRemove, sourceFileList, targetDir, hostname, username, password, exclude_files)
-  Net::FTP.open(hostname, username, password) do |ftp|
-    begin
-    #   puts "Creating dir #{targetDir}"
-      ftp.mkdir targetDir
-    rescue StandardError
-    #   puts $ERROR_INFO
-    end
-    progressbar = ProgressBar.create(:total => sourceFileList.size, :progress_mark => '#', :format => '%t: |%B|'.yellow)
-    sourceFileList.each do |srcFile|
-      targetFile = srcFile.pathmap(prefixToRemove ? "%{^#{prefixToRemove},#{targetDir}}p" : "#{targetDir}%s%p")
-
-      next if exclude_files.include?(srcFile)
-
-      begin
-        if File.directory?(srcFile)
-          progressbar.log "Creating dir #{targetFile}"
-          ftp.mkdir targetFile
-        else
-          progressbar.log "Copying #{srcFile} -> #{targetFile}"
-          ftp.putbinaryfile(srcFile, targetFile)
-        end
-        progressbar.increment 
-      rescue StandardError
-        progressbar.log $ERROR_INFO
-      end
-    end
-    progressbar.finish
-    progressbar.stop
-  end
-end
-
-def cleanup
-  puts 'Cleaning up generated site'
-  FileUtils.remove_dir('_site', true)
-end
-
 def jekyll(directives = '')
   sh 'bundle exec jekyll ' + directives
 end
 
-task :default => :all
+def create_post(title, author, image_url)
+  current_date = Time.now
+
+  file_name = "_posts/#{current_date.strftime('%Y-%m-%d')}-#{title.sub(/\s/, '-')}.md"
+  File.open(file_name, 'w') do |f|
+    f.puts '---'
+    f.puts 'layout: post'
+    f.puts "title: \"#{title}\""
+    f.puts "author: #{author}"
+    f.puts "imageurl: \"#{image_url}\""
+    f.puts '---'
+    f.puts
+    f.puts '<!-- Excerpt content -->'
+    f.puts
+    f.puts '<!-- more -->'
+    f.puts
+    f.puts '<!-- Content -->'
+  end
+end
+
+desc 'Build and upload the website'
+task default: %i[build ftp]
+
+desc 'Create a new blog post'
+task :post do
+  data = YAML.load_file '_config.yml'
+  default_author = data['defaults'][0]['values']['author']
+  default_image = data['defaults'][0]['values']['imageurl']
+
+  title = prompt 'Post title: '
+
+  author = prompt "Post author (default: #{default_author}): "
+  author = default_author if author.empty?
+
+  image = prompt "Post image name (default: #{default_image}): "
+  image = image.empty? ? default_image : "assets/images/#{image}"
+
+  create_post title, author, image
+end
 
 desc 'Clean up generated site'
 task :clean do
-  cleanup
+  puts 'Cleaning up generated site'
+  FileUtils.remove_dir('_site', true)
 end
 
-desc 'Building Jekyll site'
+desc 'Build Jekyll site'
 task build: :clean do
   jekyll('build')
 end
 
-task :all => [:build, :ftp]
-
+desc 'Upload the file via FTP'
 task :ftp do
   begin
     username = prompt 'Username: '
