@@ -9,7 +9,7 @@
         {% for member in site.data.team %}
             <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" itemscope itemtype="https://schema.org/Person">
                 <div class="avatar mx-auto">
-                    <img src="{{ site.url }}/assets/images/team/{{ member.image }}" class="rounded-circle z-depth-1" alt="{{ member.name }}">
+                    <img src="{{ '/assets/images/team/' | absolute_url }}{{ member.image }}" class="rounded-circle z-depth-1" alt="{{ member.name }}">
                 </div>
                 <p class="font-weight-bold mt-4 mb-3 h5">
                     <span itemprop="givenName">{{ member.name }}</span><br/>
