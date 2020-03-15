@@ -47,18 +47,18 @@ $splash-shadow-length: 500;
 
 		& > div a {
 			background-color: $main-color-dark !important;
-			@include long-shadow(box, $main-color-dark, $splash-shadow-length, false, false, right);
-			&:hover, &:focus {
-				@include long-shadow(
-					box,
-					$main-color-dark,
-					450,
-					false,
-					false,
-					right,
-					", 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15)"
-				);
-			}
+			// @include long-shadow(box, $main-color-dark, $splash-shadow-length, false, false, right);
+			// &:hover, &:focus {
+			// 	@include long-shadow(
+			// 		box,
+			// 		$splash-shadow-length,
+			// 		450,
+			// 		false,
+			// 		false,
+			// 		right,
+			// 		", 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15)"
+			// 	);
+			// }
 		}
 	}
 }
