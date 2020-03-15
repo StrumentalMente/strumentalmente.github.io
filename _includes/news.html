@@ -7,9 +7,9 @@
             <div class="card h-100">
                 <img class="card-img-top" src="{{ post.imageurl | absolute_url }}" alt="{{ post.title }} thumbnail">
                 <div class="card-body">
-                    <h4 class="card-title">{{ post.title }}</h4>
-                    <p class="card-text">{{ post.excerpt }}</p>
-                    <a href="{{ post.url }}" class="btn btn-primary mx-auto" style="display: block;">Leggi</a>
+                    <h4 class="card-title">{{ post.title | smartify }}</h4>
+                    <p class="card-text">{{ post.excerpt | smartify }}</p>
+                    <a href="{{ post.url | absolute_url }}" class="btn btn-primary mx-auto" style="display: block;">Leggi</a>
                 </div>
             </div>
         </div>
