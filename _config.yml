@@ -19,8 +19,8 @@ author: FSC
 logo: "/assets/images/logo/1024x1024.png"
 description: >-
   Il sito ufficiale.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://strumentalmente.it" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "strumentalmente.it" # the subpath of your site, e.g. /blog
+url: "https://strumentalmente.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username: F-S-C
 lang: "it"
