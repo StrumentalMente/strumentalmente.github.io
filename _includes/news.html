@@ -5,7 +5,7 @@
         {% for post in site.posts limit:3 %}
         <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card h-100">
-                <img class="card-img-top" src="{{ site.url }}/{{ post.imageurl }}" alt="{{ post.title }} thumbnail">
+                <img class="card-img-top" src="{{ post.imageurl | absolute_url }}" alt="{{ post.title }} thumbnail">
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title }}</h4>
                     <p class="card-text">{{ post.excerpt }}</p>
@@ -23,7 +23,7 @@
     {% if number_of_posts > 0 %}
     <div class="row">
         <div class="col">
-            <button type="button" onclick="location.href='{{ site.baseurl }}/blog.html';" class="btn btn-primary mx-auto" {% if number_of_posts <= 3 %} disabled {% endif %} style="display: block; width: fit-content;">Carica altro</button>
+            <button type="button" onclick="location.href='{{ '/blog.html' | absolute_url }}';" class="btn btn-primary mx-auto" {% if number_of_posts <= 3 %} disabled {% endif %} style="display: block; width: fit-content;">Carica altro</button>
         </div>
     </div>
     {% endif %}
