@@ -25,7 +25,7 @@ icons:
     link: "https://github.com/F-S-C/StrumentalMente"
     icon: "fas fa-code-branch"
     blank: true
-  - label: "Visita il profilo di GitHub degli FSC"
-    link: "https://github.com/F-S-C"
+  - label: "Visita il profilo GitHub del progetto"
+    link: "https://github.com/StrumentalMente"
     icon: "fab fa-github"
     blank: true
