@@ -24,8 +24,8 @@ def ftp_files(prefix_to_remove, source_files, target_dir, hostname, username, pa
           ftp.putbinaryfile(source_file, target_file)
         end
         progressbar.increment
-      rescue StandardError
-        progressbar.log $ERROR_INFO
+      rescue StandardError => e
+        progressbar.log "  => #{e.message.strip}".red
       end
     end
     progressbar.finish
