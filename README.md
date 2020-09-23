@@ -1,4 +1,4 @@
 # StrumentalMente's Website
 
 This is the repository containing the source code of
-[strumentalmente.it](https://strumentalmente.it).
+[strumentalmente.github.io](https://strumentalmente.github.io).
